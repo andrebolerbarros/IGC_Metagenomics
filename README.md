@@ -1,65 +1,19 @@
-# Metagenomics
+# Pipeline for Shotgun Metagenomics @IGC 
+
+The pipeline here presented is based on the one from fdcerqueira (https://github.com/fdcerqueira/Metagenomics/tree/main). 
 
 Metagenomics workflow made as a part of an experiment designed to study the tempo and mode of adaptation of a new strain of *E. coli*, and other species present in the gut of obese mice. Those mice were leptin deficient mice and were colonized with a strain of *E. coli*. In addition to the invader strain, the mice were also colonized with another *E. coli* strain which typically resides in their normal gut microbiota.
 
 The aim of the workflow is to process the metagenomics data and detect SNVs in metagenomic assembled genomes (MAGs).
 
-The workflow was divided in three main bash scripts, that allow user's input to change certain parameters in the Assembly and inStrain pipeline.
-<br/>
-<br/>
-<br/>
-**Assembly.sh**
+This pipeline is divided into 4 main scripts that can be used by the user, with the ability of changing some specific parameters:
+- **Assembly.sh**: performs pre-processing of fastq files, remove host contamination, and performs the assembly with respective assessment using
+- **Binning.sh**: performs binning and taxonomy attribution.
+- **instrain.sh**: performs all the steps for `inStrain`, including pre- and post-processing
+- **Midas.sh**: uses `MIDAS`, with all the steps involved.
 
-1)Pre-processing of fastq files
 
-2)Remove host contamination
 
-3)Run nonPareil
-
-4)Co-assembly with Megahit
-
-5)Quast
-
-6)Read recruitment
-<br/>
-<br/>
-<br/>
-**binning.sh**
-
-1)Create metadata for the SqueezeMeta pipeline
-
-2)Binning using SqueezeMeta 
-<br/>
-<br/>
-<br/>
-**instrain.sh**
-
-1)Run checkM
-
-2)Changing checkM output file structure for dREP
-
-3)Dereplication with dRep
-
-4)Change contigs IDs with seqkit
-
-5)ORFs prediction with prodigal
-
-6)Align reads to MAGs with bowtie2
-
-7)inStrain profile
-
-8)Gene annotations with prokka
-
-9)Check CDS in common from prokka and prodigal
-
-10)Extract fom prokka's .gbk file the common CDS and information
-
-11)Merge SNVs table with gene and gene product names
-
-12)Merge taxonomic information from the MAGs with the SNVs table
-<br/>
-<br/>
-<br/>
 **Third party softwares used:**
 
 megahit:
@@ -91,7 +45,3 @@ https://academic.oup.com/bioinformatics/article/30/14/2068/2390517
 
 prodigal:
 https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-11-119
-
-
-
-
